@@ -16,6 +16,11 @@ import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        private const val MaxNumber = "max_number"
+        private const val MinNumber = "min_number"
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,24 +39,24 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val updated = task.result
                     Log.d(ContentValues.TAG, "Config params updated: $updated")
-                    Toast.makeText(this, "Está acessando o FireBase",
+                    Toast.makeText(this, getString(R.string.access_firebase) ,
                         Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "Não está acessando o FireBase",
+                    Toast.makeText(this, getString(R.string.no_access_firebase),
                         Toast.LENGTH_SHORT).show()
                 }
             }
 
-        val getMaxNumValue: String = Firebase.remoteConfig.getString("max_number");
-        val getMinNumValue: String = Firebase.remoteConfig.getString("min_number");
+        val getMaxNumValue: String = Firebase.remoteConfig.getString(MaxNumber);
+        val getMinNumValue: String = Firebase.remoteConfig.getString(MinNumber);
 
         textViewResultado.text= getMinNumValue.toString()
 
         if(getMaxNumValue == ""){
-            Toast.makeText(this, "Valores vazios",
+            Toast.makeText(this, getString(R.string.empty_values),
                 Toast.LENGTH_SHORT).show()
         }else{
-            Toast.makeText(this, "Valores do firebase não estão vazios",
+            Toast.makeText(this,getString(R.string.not_empty_values) ,
                 Toast.LENGTH_SHORT).show()
         }
 

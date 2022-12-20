@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MaxNumber</string>
+    <string name="empty_values">Valores vazios</string>
+    <string name="not_empty_values">Valores do firebase não estão vazios</string>
+    <string name="access_firebase">Está acessando o FireBase</string>
+    <string name="no_access_firebase">Não está acessando o FireBase</string>
 </resources>
